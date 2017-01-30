@@ -52,16 +52,16 @@ struct s3c_gpio_chip;
 struct s3c_gpio_cfg {
 	unsigned int	cfg_eint;
 
-	s3c_gpio_pull_t	(*get_pull)(struct s3c_gpio_chip *chip, unsigned offs);
+	s3c_gpio_pull_t	(*get_pull)(struct s3c_gpio_chip *chip, unsigned offs);/* pull：上下拉 */
 	int		(*set_pull)(struct s3c_gpio_chip *chip, unsigned offs,
-				    s3c_gpio_pull_t pull);
+				    s3c_gpio_pull_t pull);			/* pull：上下拉 */
 
 	int		(*set_pin)(struct s3c_gpio_chip *chip, unsigned offs,
 				    s3c_gpio_pull_t level);
 
 	unsigned (*get_config)(struct s3c_gpio_chip *chip, unsigned offs);
 	int	 (*set_config)(struct s3c_gpio_chip *chip, unsigned offs,
-			       unsigned config);
+			       unsigned config);/*配置*/
 };
 
 extern int		s3c_gpio_setpin(unsigned int pin, s3c_gpio_pull_t level);
