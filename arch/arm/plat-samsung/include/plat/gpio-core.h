@@ -59,10 +59,10 @@ struct s3c_gpio_cfg;
  * bank of GPIO has its own register space and configuration registers.
  */
 struct s3c_gpio_chip {
-	struct gpio_chip	chip;
-	struct s3c_gpio_cfg	*config;
-	struct s3c_gpio_pm	*pm;
-	void __iomem		*base;
+	struct gpio_chip	chip;//gpio的属性信息以及一些的设置方法
+	struct s3c_gpio_cfg	*config;//gpio的配置
+	struct s3c_gpio_pm	*pm;//电源管理相关的
+	void __iomem		*base;//这个是端口port的操作寄存器组的基地址(虚拟基地址),区别gpio_chip里面的base
 	int			eint_offset;
 	spinlock_t		 lock;
 #ifdef CONFIG_PM
