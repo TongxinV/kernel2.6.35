@@ -75,33 +75,33 @@ struct module;
  * is calculated by subtracting @base from the gpio number.
  */
 struct gpio_chip {
-	const char		*label;
+	const char		*label;/* 端口的名字 */
 	struct device		*dev;
 	struct module		*owner;
 
 	int			(*request)(struct gpio_chip *chip,
-						unsigned offset);
+						unsigned offset);/* 申请 */
 	void			(*free)(struct gpio_chip *chip,
-						unsigned offset);
+						unsigned offset); /* 释放 */
 
 	int			(*direction_input)(struct gpio_chip *chip,
-						unsigned offset);
+						unsigned offset);/* 把gpio设置成输入模式  offset：偏移量 */
 	int			(*get)(struct gpio_chip *chip,
-						unsigned offset);
+						unsigned offset);/* 应该是得到gpio值的  offset：偏移量 */
 	int			(*direction_output)(struct gpio_chip *chip,
-						unsigned offset, int value);
+						unsigned offset, int value);/* 把gpio设置成输出模式 */
 	int			(*set_debounce)(struct gpio_chip *chip,
 						unsigned offset, unsigned debounce);
 
 	void			(*set)(struct gpio_chip *chip,
-						unsigned offset, int value);
+						unsigned offset, int value);/* 应该是设置gpio值的 */
 
 	int			(*to_irq)(struct gpio_chip *chip,
-						unsigned offset);
+						unsigned offset);/* 根据gpio的编号来换算他所对应的中断号的，因为我们很多gpio跟我们的中断相绑定都*/
 
 	void			(*dbg_show)(struct seq_file *s,
-						struct gpio_chip *chip);
-	int			base;
+						struct gpio_chip *chip);/* 应该是调试用的 */
+	int			base;//这个base是当前这个IO所在的IO端口的基准编号
 	u16			ngpio;
 	const char		*const *names;
 	unsigned		can_sleep:1;
