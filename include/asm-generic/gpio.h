@@ -97,7 +97,8 @@ struct gpio_chip {
 						unsigned offset, int value);/* 应该是设置gpio值的 */
 
 	int			(*to_irq)(struct gpio_chip *chip,
-						unsigned offset);/* 根据gpio的编号来换算他所对应的中断号的，因为我们很多gpio跟我们的中断相绑定都*/
+						unsigned offset);
+					/* 根据gpio的编号来换算他所对应的中断号的，因为我们很多gpio跟我们的中断相绑定都*/
 
 	void			(*dbg_show)(struct seq_file *s,
 						struct gpio_chip *chip);/* 应该是调试用的 */
